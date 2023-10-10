@@ -7,7 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkModuleDI {
     private val gsonFactory: GsonConverterFactory = GsonConverterFactory.create()
-    private val okHttpClient: OkHttpClient = OkHttpClient()
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder().addInterceptor { chain ->
+        val request = chain.request().newBuilder()
+            .addHeader("Authorization", "Bearer ${Constants.API_KEY}")
+            .build()
+        chain.proceed(request)
+    }
+    .build()
 
     operator fun invoke(): MovieApiService {
         return Retrofit.Builder()

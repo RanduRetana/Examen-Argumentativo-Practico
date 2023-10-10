@@ -18,7 +18,8 @@ class MainViewModel: ViewModel() {
     fun getMovieList(){
         viewModelScope.launch(Dispatchers.IO){
             try {
-                val result = movieListRequirement(10)
+                Log.d("sillegaaqui", "adsf")
+                val result : MovieObject? = movieListRequirement(10)
                 if(result != null) {
                     movieLiveData.postValue(result!!)
                 }

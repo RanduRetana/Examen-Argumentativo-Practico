@@ -9,6 +9,6 @@ interface MovieApiService {
     //https://api.themoviedb.org/3/
     @GET("movie/popular")
     suspend fun getMoviesList(
-        @Query("page") page: Int
+        @Query("results") page: Int
     ): MovieObject
 }

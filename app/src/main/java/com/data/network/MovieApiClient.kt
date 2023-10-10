@@ -11,10 +11,8 @@ class MovieApiClient {
         api = NetworkModuleDI()
         return try{
             val result = api.getMoviesList(limit)
-            Log.d("yaporfavorfunciona", result.toString())
             result
         }catch (e:java.lang.Exception){
-            Log.d("enesrio???", "mvlv")
             e.printStackTrace()
             null
         }
