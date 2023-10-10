@@ -22,4 +22,13 @@
         android:text="Nombre"
         android:id="@+id/TVTitle"
         />
+    <TextView        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Nombre"
+        android:id="@+id/TVDescription"
+        />
 </LinearLayout>

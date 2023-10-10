@@ -1,12 +1,19 @@
 package com.framework.views
 
+import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.data.network.model.Movie
+import com.data.network.model.MovieObject
 import com.example.examen.databinding.ActivityMainBinding
+import com.framework.adapters.MoviesAdapter
+import com.framework.viewmodel.MainViewModel
 
 class MainActivity: AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private val adapter : MoviesAdapter = MoviesAdapter()
-    private lateinit var data:ArrayList<MoviesBase>
+    private lateinit var data:ArrayList<MovieObject>
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -15,7 +22,7 @@ class MainActivity: AppCompatActivity(){
 
         initializeBinding()
         initializeObservers()
-        viewModel.getMoviesList()
+        viewModel.getMovieList()
 
     }
 
@@ -24,7 +31,7 @@ class MainActivity: AppCompatActivity(){
         setContentView(binding.root)
     }
 
-    private fun setUpRecyclerView(dataForList:ArrayList<MoviesBase>){
+    private fun setUpRecyclerView(dataForList:ArrayList<Movie>){
         binding.RVMovies.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(
             this,
@@ -36,8 +43,8 @@ class MainActivity: AppCompatActivity(){
     }
 
     private fun initializeObservers(){
-        viewModel.moviesObjectLiveData.observe(this){ moviesObject ->
-            setUpRecyclerView(moviesObject.results)
+        viewModel.movieLiveData.observe(this){ movieObject ->
+            setUpRecyclerView(movieObject.results)
         }
     }
 }

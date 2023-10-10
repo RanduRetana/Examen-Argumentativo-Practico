@@ -2,7 +2,7 @@ package com.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieBase(
+data class Movie(
     @SerializedName("adult") val adult: Boolean,
     @SerializedName("backdrop_path") val backdrop_path: String,
     @SerializedName("genres_ids") val genre_ids: List<Int>,
